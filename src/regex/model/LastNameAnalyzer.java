@@ -4,23 +4,18 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import java.util.Scanner;
 
-public class FirstNameAnalyzer
+public class LastNameAnalyzer
 {
-	public FirstNameAnalyzer()
+	public boolean lastNameAnalyzer(String lastName)
 	{
 		
-	}
-	
-	
-	public boolean firstNameAnalyzer(String firstName)
-	{
 		
 		String [] specialCharArray;
 		Scanner wordFile;
 		int wordCount = 0;
 		try
 		{	//First time through the list to get its size.
-			wordFile = new Scanner(new File("SpecialCharecters.txt"));
+			wordFile = new Scanner(new File("LastName.txt"));
 			while (wordFile.hasNext())
 			{
 				wordCount++;
@@ -28,7 +23,7 @@ public class FirstNameAnalyzer
 			}
 			wordFile.close();
 			
-			wordFile = new Scanner(new File("SpecialCharecters.txt"));
+			wordFile = new Scanner(new File("LastName.txt"));
 			//creates an array with the number we got on the first list loop.
 			specialCharArray = new String[wordCount];
 			wordCount = 0;
@@ -42,7 +37,7 @@ public class FirstNameAnalyzer
 			
 			for(int index = 0; index < specialCharArray.length; index++)
 			{
-				if(firstName.contains(specialCharArray[index]))
+				if(lastName.contains(specialCharArray[index]))
 				{
 					System.out.println("wrong");
 					return false;
