@@ -1,18 +1,26 @@
 package regex.view;
 
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.SpringLayout;
 
 import regex.controller.RegexController;
+import regex.model.FirstNameAnalyzer;
 
 public class RegexPanel extends JPanel
 {
 	private RegexController baseController;
 	private SpringLayout baseLayout;
+	
+	private FirstNameAnalyzer firstNameChecker;
+	
+	private String windowMessage =("Wrong");
 
 	// text
 	private JTextArea firstNameBox;
@@ -30,6 +38,8 @@ public class RegexPanel extends JPanel
 	{
 		this.baseController = baseController;
 		baseLayout = new SpringLayout();
+		
+		firstNameChecker = new FirstNameAnalyzer();
 
 		// Text area
 		firstNameBox = new JTextArea();
@@ -107,7 +117,17 @@ public class RegexPanel extends JPanel
 
 	private void setupListeners()
 	{
-
+		checkFirstNameButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent Clicked)
+			{
+				firstNameChecker.firstNameAnalyzer(firstNameBox.getText());
+				if(firstNameChecker.equals(false))
+				{
+					JOptionPane.showMessageDialog(null, windowMessage, windowMessage, JOptionPane.ERROR_MESSAGE);
+				}
+			}
+		});
 	}
 
 }
