@@ -124,7 +124,7 @@ public class RegexPanel extends JPanel
 				firstNameChecker.firstNameAnalyzer(firstNameBox.getText());
 				if(firstNameChecker.equals(false))
 				{
-					JOptionPane.showMessageDialog(null, windowMessage, windowMessage, JOptionPane.ERROR_MESSAGE);
+					
 				}
 			}
 		});
